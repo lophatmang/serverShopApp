@@ -57,8 +57,16 @@ mongoose
                 },
               ],
             });
-            sessionNew.save();
-            io.emit("newRoom", { userId: data.userId });
+            sessionNew.save().then(() => {
+              Session.find()
+                .select("userId")
+                .then((userList) => {
+                  io.emit("newRoom", {
+                    userId: data.userId,
+                    userList: userList,
+                  });
+                });
+            });
           } else {
             session.chatMessage.push({
               message: data.message,
@@ -73,8 +81,15 @@ mongoose
       socket.on("exit", (data) => {
         Session.findOneAndDelete({ userId: data.userId }).then(() => {
           console.log("Exit Room Chat");
+          Session.find()
+            .select("userId")
+            .then((userList) => {
+              io.emit("deleteRoom", {
+                userId: data.userId,
+                userList: userList,
+              });
+            });
         });
-        io.emit("deleteRoom", { userId: data.userId });
       });
 
       socket.on("disconnect", () => {
