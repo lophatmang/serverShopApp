@@ -17,7 +17,6 @@ const sessionRouter = require("./routes/session");
 const Session = require("./models/session");
 
 app.use(cors(), bodyParser.json({ limit: "50mb" }));
-
 app.use(userRouter);
 app.use(productRouter);
 app.use(cartRouter);
