@@ -25,6 +25,17 @@ app.use(sessionRouter);
 app.use("/admin", adminRouter);
 
 app.use((req, res, next) => {
+  res.set({
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "*",
+    "Access-Control-Allow-Headers":
+      "'Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token'",
+  });
+
+  next();
+});
+
+app.use((req, res, next) => {
   res.status(404).json({
     errorMessage: "Route not found",
   });
