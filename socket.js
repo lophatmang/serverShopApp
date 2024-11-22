@@ -5,10 +5,9 @@ module.exports = {
     io = require("socket.io")(httpServer, {
       cors: {
         origin: "*",
-      },
-      allowRequest: (req, callback) => {
-        const noOriginHeader = req.headers.origin === undefined;
-        callback(null, noOriginHeader);
+        methods: ["GET", "POST"],
+        allowedHeaders: ["my-custom-header"],
+        credentials: true,
       },
     });
     return io;
