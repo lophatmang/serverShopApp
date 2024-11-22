@@ -7,6 +7,7 @@ module.exports = {
         origin: "*",
         methods: ["GET", "POST"],
         allowedHeaders: ["my-custom-header"],
+        transports: ["websocket", "polling"],
         credentials: true,
       },
     });
