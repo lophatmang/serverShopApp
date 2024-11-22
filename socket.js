@@ -4,7 +4,7 @@ module.exports = {
   init: (httpServer) => {
     io = require("socket.io")(httpServer, {
       cors: {
-        origin: "*",
+        origin: "https://admin-shop-app.vercel.app",
       },
       allowRequest: (req, callback) => {
         const noOriginHeader = req.headers.origin === undefined;
