@@ -6,6 +6,10 @@ module.exports = {
       cors: {
         origin: "*",
       },
+      allowRequest: (req, callback) => {
+        const noOriginHeader = req.headers.origin === undefined;
+        callback(null, noOriginHeader);
+      },
     });
     return io;
   },
