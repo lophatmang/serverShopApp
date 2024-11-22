@@ -6,10 +6,6 @@ module.exports = {
       cors: {
         origin: "https://admin-shop-app.vercel.app",
       },
-      allowRequest: (req, callback) => {
-        const noOriginHeader = req.headers.origin === undefined;
-        callback(null, noOriginHeader);
-      },
     });
     return io;
   },
