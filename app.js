@@ -15,8 +15,10 @@ const orderRouter = require("./routes/order");
 const adminRouter = require("./routes/admin");
 const sessionRouter = require("./routes/session");
 const Session = require("./models/session");
+const contentRange = require("./middleware/contentRange");
 
 app.use(cors(), bodyParser.json({ limit: "50mb" }));
+app.use(contentRange);
 app.use(userRouter);
 app.use(productRouter);
 app.use(cartRouter);
