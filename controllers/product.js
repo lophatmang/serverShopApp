@@ -6,7 +6,19 @@ exports.getProducts = async (req, res, next) => {
 
     // res.status(200).json(products);
     res.status(200).json({
-      data: products,
+      data: [
+        {
+          id: "1",
+          title: "Hello world",
+          body: "Hello world",
+        },
+        {
+          id: "2",
+          title: "Hello world",
+          body: "Hello world",
+        },
+      ],
+      total: 2,
     });
   } catch (error) {
     return next(new Error(error));
