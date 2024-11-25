@@ -18,7 +18,6 @@ exports.getProducts = async (req, res, next) => {
           body: "Hello world",
         },
       ],
-      total: 2,
     });
   } catch (error) {
     return next(new Error(error));
