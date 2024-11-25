@@ -4,7 +4,22 @@ exports.getProducts = async (req, res, next) => {
   try {
     const products = await Product.find();
 
-    res.status(200).json(products);
+    // res.status(200).json(products);
+    res.status(200).json({
+      data: [
+        {
+          id: "1",
+          title: "Hello world",
+          body: "Hello world",
+        },
+        {
+          id: "2",
+          title: "Hello world",
+          body: "Hello world",
+        },
+      ],
+      total: 2,
+    });
   } catch (error) {
     return next(new Error(error));
   }
